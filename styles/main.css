@@ -1,11 +1,32 @@
-.c-item{
-    background-color: rgba(128, 128, 128, 0.541);
- height: 390px;
- 
- 
+.card-img-top{
+    height: 200px;
+    object-fit: cover;
 }
-.c-img{
-height: 150%;
-object-fit: contain;
+#carouselExampleCaptions{
+    height: 30%;
+}
+
+footer img{
+    height: 3vh;
+    max-width: 50px;
 
 }
+
+#formbox{
+    padding-top: 1em;
+    width: 80%;
+}
+     
+.d-block{
+    max-height: 400px;
+    object-fit: cover;
+    
+}
+
+
+
+main{
+    min-height: 80vh;
+    
+}
+

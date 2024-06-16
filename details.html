@@ -1,34 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="./Recursos_Amazing_Events_Task_1/favicon.png">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <title>Details</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="./Recursos_Amazing_Events_Task_1/favicon.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="stylesheet" href="./styles/main.css">
+  <title>Past Events</title>
 </head>
-<header>
+
+<body>
+  <header class="sticky-top">
     <nav class="navbar navbar-expand-lg bg-body-tertiary navbar bg-dark border-bottom border-body" data-bs-theme="dark">
-        <div class="container-fluid justify-content-center">
-            <a class="navbar-brand" href="home.html"> <img class="img-fluid" src="./Recursos_Amazing_Events_Task_1/amazing_brand.png" alt="logo"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-    
-              <div class="collapse navbar-collapse nav justify-content-center text-center" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-              <a class="nav-link btn btn-secondary" href="#">HOME</a>
-              <a class="nav-link btn btn-secondary" href="upcomingevents.html">UPCOMING EVENTS</a>
-              <a class="nav-link btn btn-secondary" href="pastevents.html">PAST EVENTS</a>
-              <a class="nav-link btn btn-secondary" href="contact.html">CONTACT</a>
-              <a class="nav-link btn btn-secondary" href="stats.html">STATS</a>
+      <div class="container-fluid justify-content-center">
+        <a class="navbar-brand" href="home.html"> <img class="img-fluid"
+            src="./Recursos_Amazing_Events_Task_1/amazing_brand.png" alt="logo"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse nav justify-content-center text-center" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link btn btn-secondary" href="home.html">HOME</a>
+            <a class="nav-link btn btn-secondary" href="upcomingevents.html">UPCOMING EVENTS</a>
+            <a class="nav-link btn btn-secondary" href="pastevents.html">PAST EVENTS</a>
+            <a class="nav-link btn btn-secondary" href="contact.html">CONTACT</a>
+            <a class="nav-link btn btn-secondary" href="stats.html">STATS</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="m-5 align-items-center">
+    <div id="containerdetails" class="d-flex justify-content-center align-items-center ">
+      <div class="card mb-3">
+        <div class="row g-0">
+          <div class="col-md-4 w-75-lg">
+            <img id="imgg" src="./Recursos_Amazing_Events_Task_1/optional_banner_1.jpg"
+              class="img-fluid rounded-start w-100 " alt="food">
+          </div>
+          <div class="col-md-8 w-25-lg">
+            <div class="card-body text-center ">
+              <h5 class="card-title">Festival of the collectivities</h5>
+              <p class="card-text">Date "2022-12-12"</p>
+              <p class="card-text">Description: Enjoy your favorite dishes from different countries in a unique event
+                for the whole family.</p>
+              <p class="card-text">Category: Food Fair
+              <p class="card-text">Place: Room A</p>
+              <p class="card-text">Capacity: 45,000</p>
+              <p class="card-text">Assistance: 42756</p>
+              <p class="card-text">Price: 5</p>
+
             </div>
           </div>
         </div>
-      </nav>
-</header>
-<body>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>   
+      </div>
+    </div>
+
+
+
+  </main>
+
+
+  <footer class="bg-body-tertiary d-flex p-2">
+
+    <div class="container-fluid w-75 justify-content-center">
+      <a href="https://www.facebook.com/"><img src="./Recursos_Amazing_Events_Task_1/facebook.png" alt=""></a>
+      <a href="https://www.whatsapp.com/"><img src="./Recursos_Amazing_Events_Task_1/whatsapp.png" alt=""></a>
+      <a href="https://www.instagram.com/"><img src="./Recursos_Amazing_Events_Task_1/instagram.png" alt=""></a>
+    </div>
+    <div class="container-fluid w-25 text-end">
+      COHORT
+    </div>
+
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
 </body>
+
 </html>

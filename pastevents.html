@@ -5,30 +5,198 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./Recursos_Amazing_Events_Task_1/favicon.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="./styles/main.css">
     <title>Past Events</title>
 </head>
-<header>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary navbar bg-dark border-bottom border-body" data-bs-theme="dark">
-        <div class="container-fluid justify-content-center">
-            <a class="navbar-brand" href="home.html"> <img class="img-fluid" src="./Recursos_Amazing_Events_Task_1/amazing_brand.png" alt="logo"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-    
-              <div class="collapse navbar-collapse nav justify-content-center text-center" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-              <a class="nav-link btn btn-secondary" href="home.html">HOME</a>
-              <a class="nav-link btn btn-secondary" href="upcomingevents.html">UPCOMING EVENTS</a>
-              <a class="nav-link btn btn-secondary" href="#">PAST EVENTS</a>
-              <a class="nav-link btn btn-secondary" href="contact.html">CONTACT</a>
-              <a class="nav-link btn btn-secondary" href="stats.html">STATS</a>
-            </div>
+<body>
+<header class="sticky-top">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary navbar bg-dark border-bottom border-body" data-bs-theme="dark">
+    <div class="container-fluid justify-content-center">
+      <a class="navbar-brand" href="home.html"> <img class="img-fluid"
+          src="./Recursos_Amazing_Events_Task_1/amazing_brand.png" alt="logo"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse nav justify-content-center text-center" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link btn btn-secondary" href="home.html">HOME</a>
+          <a class="nav-link btn btn-secondary" href="upcomingevents.html">UPCOMING EVENTS</a>
+          <a class="nav-link btn btn-secondary" href="#">PAST EVENTS</a>
+          <a class="nav-link btn btn-secondary" href="contact.html">CONTACT</a>
+          <a class="nav-link btn btn-secondary" href="stats.html">STATS</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<main class="m-2">
+
+
+  <div id="carouselExampleCaptions" class="carousel slide carousel-fade">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+        aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+        aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+        aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="./Recursos_Amazing_Events_Task_1/optional_banner_5.jpg" class="d-block w-100" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Past Events</h5>
+          <p>Some past events.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <a href="upcomingevents.html"><img src="./Recursos_Amazing_Events_Task_1/optional_banner_3.jpg" class="d-block w-100" alt="..."></a>
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Upcoming Events</h5>
+          <p>Some upcoming events.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <a href="contact.html"><img src="./Recursos_Amazing_Events_Task_1/optional_banner_2.jpg" class="d-block w-100" alt="..."></a>
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Contact</h5>
+          <p>Some representative placeholder content for the third slide.</p>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+      data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+      data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+  <div class="navbar navbar-expand-md bg-body-tertiary">
+    <div class="container-fluid justify-content-center">
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav me-auto mb-2 mb-lg-0">
+
+          <div class="form-check m-1">
+            <input class="form-check-input" type="checkbox" value="food_fair" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              Food Fair
+            </label>
+          </div>
+          <div class="form-check m-1">
+            <input class="form-check-input" type="checkbox" value="museum" id="flexCheckDefault1">
+            <label class="form-check-label" for="flexCheckDefault1">
+              Museum
+            </label>
+          </div>
+          <div class="form-check m-1">
+            <input class="form-check-input" type="checkbox" value="costume_party" id="flexCheckDefault2">
+            <label class="form-check-label" for="flexCheckDefault2">
+              Costume Party
+            </label>
+          </div>
+          <div class="form-check m-1">
+            <input class="form-check-input" type="checkbox" value="music_concert" id="flexCheckDefault3">
+            <label class="form-check-label" for="flexCheckDefault3">
+              Music Concert
+            </label>
+          </div>
+          <div class="form-check m-1">
+            <input class="form-check-input" type="checkbox" value="book_exchange" id="flexCheckDefault4">
+            <label class="form-check-label" for="flexCheckDefault">
+              Book Exchange
+            </label>
+          </div>
+          <div class="container-fluid">
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
           </div>
         </div>
-      </nav>
-</header>
-<body>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>    
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid d-flex flex-wrap justify-content-center p-4">
+    <div class="card m-1" style="width: 18rem;">
+      <img src="./Recursos_Amazing_Events_Task_1/books.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title text-center">School Book Fair</h5>
+        <p class="card-text text-center">Bring your unused school book and bring the one you need.</p>
+        <div class="container-fluid d-flex justify-content-center">
+          <p class="card-text text-center m-2">Price: 2 </p>
+          <a href="details.html" class="btn btn-primary">Details</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card m-1" style="width: 18rem;">
+      <img src="./Recursos_Amazing_Events_Task_1/cinema.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title text-center">Avengers</h5>
+        <p class="card-text text-center">Marvel's Avengers 3d premiere the start of an epic saga with your best
+          superheroes.</p>
+        <div class="container-fluid d-flex justify-content-center">
+          <p class="card-text text-center m-2">Price: 250 </p>
+          <a href="details.html" class="btn btn-primary">Details</a>
+
+        </div>
+      </div>
+    </div>
+    <div class="card m-1" style="width: 18rem;">
+      <img src="./Recursos_Amazing_Events_Task_1/food_fair.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title text-center">Festival of the collectivities</h5>
+        <p class="card-text text-center">Enjoy your favorite dishes from different countries in a unique event for the
+          whole family.</p>
+        <div class="container-fluid d-flex justify-content-center">
+          <p class="card-text text-center m-2">Price: 5 </p><a href="details.html" class="btn btn-primary">Details</a>
+        </div>
+      </div>
+    </div>
+    <div class="card m-1" style="width: 18rem;">
+      <img src="./Recursos_Amazing_Events_Task_1/music_concert.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title text-center">Metallica in concert</h5>
+        <p class="card-text text-center">The only concert of the most emblematic band in the world.</p>
+        <div class="container-fluid d-flex justify-content-center">
+          <p class="card-text text-center m-2">Price: 150 </p>
+          <a href="details.html" class="btn btn-primary">Details</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+
+<footer class="bg-body-tertiary d-flex w-100 p-2">
+
+  <div class="container-fluid w-75 justify-content-center">
+    <a href="https://www.facebook.com/"><img src="./Recursos_Amazing_Events_Task_1/facebook.png" alt=""></a>
+    <a href="https://www.whatsapp.com/"><img src="./Recursos_Amazing_Events_Task_1/whatsapp.png" alt=""></a>
+    <a href="https://www.instagram.com/"><img src="./Recursos_Amazing_Events_Task_1/instagram.png" alt=""></a>
+  </div>
+  <div class="container-fluid w-25 text-end">
+    COHORT
+  </div>
+
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+  crossorigin="anonymous"></script>
 </body>
+
 </html>
