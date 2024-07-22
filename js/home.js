@@ -195,15 +195,14 @@ const data = {
   ],
 };
 
-
-
-
-
-
-//lógica para separar eventos:
+//lógica para separar eventos por pasados y futuros:
 
 let pastEvents = []
 let upcomingEvents = []
+
+let filterTexto = document.getElementById("filter-search")
+let categoryFilters = document.querySelectorAll(".category-filter")
+let contenedorTarjetas = document.getElementById("contenedorTarjetas")
 
 for (const event of data.events) {
   let eventDate = new Date(event.date)
@@ -219,33 +218,55 @@ for (const event of data.events) {
 console.log("Eventos pasados:", pastEvents)
 console.log("Eventos futuros:", upcomingEvents)
 
-
-
-
-
 function pintarTarjetas(events) {
-  for (let i = 0; i < events.length; i++){
-    
-  
-  let contenedor = document.getElementById("contenedorTarjetas") 
-  let tarjeta = document.createElement('div')
-  tarjeta.className = "card m-1" 
-  tarjeta.innerHTML = `
-          <img src="${events[i].image}" class="card-img-top">
-         <div class="card-body">
-           <h5 class="card-title text-center">${events[i].name}</h5>
-           <p class="card-text text-center">${events[i].description}</p>
-          <div class="container-fluid d-flex justify-content-center">
-            <p class="card-text text-center m-2">Price: ${events[i].price} </p>
-            <a href="details.html" class="btn btn-primary">Details</a>
-          </div>     
-      `
-  contenedor.appendChild(tarjeta)
+  contenedorTarjetas.innerHTML = ""
+
+  if (events.length === 0) {
+    contenedorTarjetas.innerHTML = "<p>No items found.</p>"
+    return
+  }
+
+  for (let i = 0; i < events.length; i++) {
+    const tarjeta = document.createElement("div")
+    tarjeta.className = "card m-1";
+    tarjeta.innerHTML = `
+      <img src="${events[i].image}" class="card-img-top">
+      <div class="card-body">
+        <h5 class="card-title text-center">${events[i].name}</h5>
+        <p class="card-text text-center">${events[i].description}</p>
+        <div class="container-fluid d-flex justify-content-center">
+          <p class="card-text text-center m-2">Price: ${events[i].price} </p>
+          <a href="details.html" class="btn btn-primary">Details</a>
+        </div>
+      </div>
+    `
+    contenedorTarjetas.appendChild(tarjeta)
+  }
 }
+
+let filteredEvents = data.events
+
+function filterEvents() {
+  filteredEvents = data.events.filter((event) => {
+
+    const searchText = filterTexto.value.toLowerCase()
+    const matchText = event.name.toLowerCase().includes(searchText) || event.description.toLowerCase().includes(searchText)
+
+
+    const selectedCategories = [...categoryFilters].filter((checkbox) => checkbox.checked).map((checkbox) => checkbox.value)
+    const matchCategory = selectedCategories.length === 0 || selectedCategories.includes(event.category)
+
+    return matchText && matchCategory
+  })
+
+  pintarTarjetas(filteredEvents)
 }
+
+
+filterTexto.addEventListener("keyup", filterEvents)
+
+categoryFilters.forEach((checkbox) => {
+  checkbox.addEventListener("change", filterEvents)
+})
 
 pintarTarjetas(data.events)
-
-
-
-

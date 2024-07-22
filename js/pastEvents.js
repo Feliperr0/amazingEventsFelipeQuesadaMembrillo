@@ -202,10 +202,10 @@ const data = {
   
   //lógica para separar eventos:
   
-  let pastEvents = [];
-  let upcomingEvents = [];
+  let pastEvents = []
+  let upcomingEvents = []
   
-  for (let event of data.events) {
+  for (const event of data.events) {
     let eventDate = new Date(event.date)
     let currentDate = new Date(data.currentDate)
   
