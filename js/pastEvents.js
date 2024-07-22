@@ -252,29 +252,29 @@ function pintarTarjetas(pastEvents) {
   pintarTarjetas(pastEvents)
 
   
-let filteredEvents = pastEvents
+let filtrarEventos = pastEvents
 
 function filterEvents() {
-  filteredEvents = pastEvents.filter((event) => {
+  filtrarEventos = pastEvents.filter((event) => {
 
-    const searchText = filterTexto.value.toLowerCase()
-    const matchText = event.name.toLowerCase().includes(searchText) || event.description.toLowerCase().includes(searchText)
+    const buscarTexto = filterTexto.value.toLowerCase()
+    const textoEncontrado = event.name.toLowerCase().includes(buscarTexto) || event.description.toLowerCase().includes(searchText)
 
 
-    const selectedCategories = [...categoryFilters].filter((checkbox) => checkbox.checked).map((checkbox) => checkbox.value)
-    const matchCategory = selectedCategories.length === 0 || selectedCategories.includes(event.category)
+    const seleccionarCategorias = [...categoryFilters].filter((checkbox) => checkbox.checked).map((checkbox) => checkbox.value)
+    const categoriaSeleccionada = seleccionarCategorias.length === 0 || seleccionarCategorias.includes(event.category)
 
-    return matchText && matchCategory
+    return textoEncontrado && categoriaSeleccionada
   })
 
-  pintarTarjetas(filteredEvents)
+  pintarTarjetas(filtrarEventos)
 }
 
 
 filterTexto.addEventListener("keyup", filterEvents)
 
 categoryFilters.forEach((checkbox) => {
-  checkbox.addEventListener("change", filterEvents)
+  checkbox.addEventListener("click", filterEvents)
 })
 
 pintarTarjetas(pastEvents)
