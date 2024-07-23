@@ -16,7 +16,7 @@ const data = {
         __v: 0,
       },
       {
-        _id: "639c723b992482e5f2834beb",
+        id: "639c723b992482e5f2834beb",
         name: "Korean style",
         image: "https://i.postimg.cc/ZmD3Xf57/Korean-style.jpg",
         date: "2023-08-12",
@@ -195,9 +195,7 @@ const data = {
     ],
   };
   
-  
-  
-  
+
   
   
 //lógica para separar eventos por pasados y futuros:
@@ -241,7 +239,7 @@ function pintarTarjetas(pastEvents) {
         <p class="card-text text-center">${pastEvents[i].description}</p>
         <div class="container-fluid d-flex justify-content-center">
           <p class="card-text text-center m-2">Price: ${pastEvents[i].price} </p>
-          <a href="details.html" id="${pastEvents[i]._id}" class="btn btn-primary">Details</a>
+          <a href="details.html?id=${pastEvents[i]._id}" class="btn btn-primary">Details</a>
         </div>
       </div>
     `

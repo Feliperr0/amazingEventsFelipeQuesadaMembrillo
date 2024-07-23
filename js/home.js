@@ -236,7 +236,7 @@ function pintarTarjetas(events) {
         <p class="card-text text-center">${events[i].description}</p>
         <div class="container-fluid d-flex justify-content-center">
           <p class="card-text text-center m-2">Price: ${events[i].price} </p>
-          <a href="details.html" onclick="window.location.href = 'details.html?id=' + ${events[i]._id}" id="${events[i]._id}" class="btn btn-primary">Details</a>
+          <a  href="details.html?id=${events[i]._id}" class="btn btn-primary">Details</a>
         </div>
       </div>
     `
@@ -263,9 +263,6 @@ function filterEvents() {
 }
 
 
-
-
-
 filterTexto.addEventListener("keyup", filterEvents)
 
 categoryFilters.forEach((checkbox) => {
@@ -275,10 +272,6 @@ categoryFilters.forEach((checkbox) => {
 pintarTarjetas(data.events)
 
 
-
- onclick("${events[i]._id}", e => {
-  ancor.href = 'details.html?id=' + events[i]._id
- })
 
 
 
