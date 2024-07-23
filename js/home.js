@@ -195,8 +195,10 @@ const data = {
   ],
 };
 
-//lógica para separar eventos por pasados y futuros:
+// generar los inputs antes que las funciones (de lo contrario no funcionan)
+generarCheckboxes(data, checkboxContainer);
 
+//lógica para separar eventos por pasados y futuros:
 let pastEvents = []
 let upcomingEvents = []
 
@@ -228,36 +230,54 @@ function pintarTarjetas(events) {
 
   for (let i = 0; i < events.length; i++) {
     const tarjeta = document.createElement("div")
-    tarjeta.className = "card m-1";
+    tarjeta.className = "card m-1"
     tarjeta.innerHTML = `
-      <img src="${events[i].image}" class="card-img-top">
-      <div class="card-body">
-        <h5 class="card-title text-center">${events[i].name}</h5>
-        <p class="card-text text-center">${events[i].description}</p>
-        <div class="container-fluid d-flex justify-content-center">
-          <p class="card-text text-center m-2">Price: ${events[i].price} </p>
-          <a  href="details.html?id=${events[i]._id}" class="btn btn-primary">Details</a>
+        <img src="${events[i].image}" class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title text-center">${events[i].name}</h5>
+          <p class="card-text text-center">${events[i].description}</p>
+          <div class="container-fluid d-flex justify-content-center">
+            <p class="card-text text-center m-2">Price: ${events[i].price} </p>
+            <a  href="details.html?id=${events[i]._id}" class="btn btn-primary">Details</a>
+          </div>
         </div>
-      </div>
-    `
+      `
     contenedorTarjetas.appendChild(tarjeta)
   }
 }
 
 let filtrarEventos = data.events
 
+// crear checkbox
+function generarCheckboxes(data, container) {
+
+  const categorias = new Set(data.events.map((event) => event.category))
+
+  let checkboxesHTML = "";
+  for (const category of categorias) {
+    const checkbox = document.createElement('div')
+    checkboxesHTML += `
+      <div class="form-check form-check-inline">
+            <label class="form-check-label" for="checkbox-${category.replace(" ", "-")}"> ${category}
+            <input class="form-check-input category-filter" type="checkbox" value="${category}" id="checkbox-${category.replace(" ", "-")}"> 
+        </label>
+      </div>`
+  }
+
+
+  container.innerHTML = checkboxesHTML
+}
+
+// filtrar los eventos
 function filterEvents() {
-  filtrarEventos = data.events.filter((event) => {
+  const buscarTexto = filterTexto.value.toLowerCase();
+  const seleccionarCategorias = [...document.querySelectorAll('.category-filter:checked')].map((checkbox) => checkbox.value)
 
-    const buscarTexto = filterTexto.value.toLowerCase()
+  const filtrarEventos = data.events.filter((event) => {
     const textoEncontrado = event.name.toLowerCase().includes(buscarTexto) || event.description.toLowerCase().includes(buscarTexto)
-
-
-    const seleccionarCategorias = [...categoryFilters].filter((checkbox) => checkbox.checked).map((checkbox) => checkbox.value)
     const categoriaSeleccionada = seleccionarCategorias.length === 0 || seleccionarCategorias.includes(event.category)
-
     return textoEncontrado && categoriaSeleccionada
-  })
+  });
 
   pintarTarjetas(filtrarEventos)
 }
@@ -266,11 +286,16 @@ function filterEvents() {
 filterTexto.addEventListener("keyup", filterEvents)
 
 categoryFilters.forEach((checkbox) => {
-  checkbox.addEventListener("click", filterEvents)
+  checkbox.addEventListener("change", filterEvents)
+  console.log(categoryFilters)
 })
 
 pintarTarjetas(data.events)
 
+
+// prueba de los inputs
+console.log(categoryFilters) 
+console.log(filterTexto)
 
 
 
