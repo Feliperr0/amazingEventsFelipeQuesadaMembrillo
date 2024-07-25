@@ -1,3 +1,7 @@
+import * as module from "./modules.js"
+
+
+
 const data = {
   currentDate: "2023-01-01",
   events: [
@@ -195,6 +199,9 @@ const data = {
   ],
 };
 
+
+
+
 // generar los inputs antes que las funciones (de lo contrario no funcionan)
 generarCheckboxes(data, checkboxContainer);
 
@@ -219,7 +226,7 @@ for (const event of data.events) {
 
 console.log("Eventos pasados:", pastEvents)
 console.log("Eventos futuros:", upcomingEvents)
-
+/*
 function pintarTarjetas(events) {
   contenedorTarjetas.innerHTML = ""
 
@@ -245,6 +252,7 @@ function pintarTarjetas(events) {
     contenedorTarjetas.appendChild(tarjeta)
   }
 }
+  */
 
 let filtrarEventos = data.events
 
@@ -269,11 +277,12 @@ function generarCheckboxes(data, container) {
 }
 
 // filtrar los eventos
+/*
 function filterEvents() {
   const buscarTexto = filterTexto.value.toLowerCase();
   const seleccionarCategorias = [...document.querySelectorAll('.category-filter:checked')].map((checkbox) => checkbox.value)
 
-  const filtrarEventos = data.events.filter((event) => {
+    const filtrarEventos = data.events.filter((event) => {
     const textoEncontrado = event.name.toLowerCase().includes(buscarTexto) || event.description.toLowerCase().includes(buscarTexto)
     const categoriaSeleccionada = seleccionarCategorias.length === 0 || seleccionarCategorias.includes(event.category)
     return textoEncontrado && categoriaSeleccionada
@@ -281,7 +290,7 @@ function filterEvents() {
 
   pintarTarjetas(filtrarEventos)
 }
-
+*/
 
 filterTexto.addEventListener("keyup", filterEvents)
 
@@ -290,7 +299,7 @@ categoryFilters.forEach((checkbox) => {
   console.log(categoryFilters)
 })
 
-pintarTarjetas(data.events)
+module.pintarTarjetas(data.events,contenedorTarjetas)
 
 
 // prueba de los inputs
