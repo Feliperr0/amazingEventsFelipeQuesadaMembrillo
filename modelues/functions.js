@@ -37,3 +37,11 @@ export function pintarTarjetas(events, contenedorTarjetas) {
   
     pintarTarjetas(filtrarEventos, contenedorTarjetas)
   }
+
+
+
+  export function tableStats(){
+
+  }
+
+  

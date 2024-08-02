@@ -198,6 +198,7 @@ const urlparams = new URLSearchParams(window.location.search);
 const eventoId = urlparams.get('id');
 console.log(eventoId)
 // Supongamos que tienes un objeto llamado 'data' con la propiedad 'events'
+
 const event = data.events.find(e => e._id === eventoId);
 console.log(event)
 const cardContainer = document.getElementById('card');
