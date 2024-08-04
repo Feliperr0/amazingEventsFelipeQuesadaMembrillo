@@ -241,6 +241,7 @@ function pintarTarjetas(pastEvents) {
         <div class="container-fluid d-flex justify-content-center">
           <p class="card-text text-center m-2">Price: ${pastEvents[i].price} </p>
           <a href="details.html?id=${pastEvents[i]._id}" class="btn btn-primary">Details</a>
+          <a href="details.html?id=${pastEvents._id}" class="btn btn-primary">Details</a>
         </div>
       </div>
     `
