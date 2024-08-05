@@ -1,65 +1,72 @@
+//  Functions general cards
 
-export function pintarTarjetas(events, contenedorTarjetas) {
-    contenedorTarjetas.innerHTML = ""
+export function pintarCheckbox(arregloCategorias) {
+  for (let i = 0; i < arregloCategorias.length; i++) {
+    const nuevoCheck = document.createElement("div")
+    nuevoCheck.className = "col-12 col-sm-6 col-md-4 col-lg-2 d-flex align-items-center justify-content-center mb-2"
+    nuevoCheck.innerHTML = `
+  
+          <input type="checkbox" class="me-2" category-filter" value="${arregloCategorias[i]}" id="${arregloCategorias[i]}"> 
+      <label for="${arregloCategorias[i]}"> ${arregloCategorias[i]} </label>
+    `
+    document.getElementById("checkboxContainer").appendChild(nuevoCheck)
 
-    if (events.length === 0) {
-
-      contenedorTarjetas.innerHTML = "<p>No items found.</p>"
-      return
-    }
-  
-    for (let i = 0; i < events.length; i++) {
-      const tarjeta = document.createElement("div")
-      tarjeta.className = "card m-1"
-      tarjeta.innerHTML = `
-          <img src="${events[i].image}" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title text-center">${events[i].name}</h5>
-            <p class="card-text text-center">${events[i].description}</p>
-            <div class="container-fluid d-flex justify-content-center">
-              <p class="card-text text-center m-2">Price: ${events[i].price} </p>
-              <a  href="details.html?id=${events[i]._id}" class="btn btn-primary">Details</a>
-            </div>
-          </div>
-        `
-      contenedorTarjetas.appendChild(tarjeta)
-    }
-  }
-  
-  export function filterEvents(contenedorTarjetas) {
-    const buscarTexto = filterTexto.value.toLowerCase();
-    const seleccionarCategorias = [...document.querySelectorAll('.category-filter:checked')].map((checkbox) => checkbox.value)
-  
-      const filtrarEventos = data.events.filter((event) => {
-      const textoEncontrado = event.name.toLowerCase().includes(buscarTexto) || event.description.toLowerCase().includes(buscarTexto)
-      const categoriaSeleccionada = seleccionarCategorias.length === 0 || seleccionarCategorias.includes(event.category)
-      return textoEncontrado && categoriaSeleccionada
-    });
-  
-    pintarTarjetas(filtrarEventos, contenedorTarjetas)
   }
 
+}
+export function filtroTexto(arregloEventos) {
+  let texto = document.getElementById("inputTexto").value.toLowerCase()
+  console.log(texto)
+  let arregloFiltrado = arregloEventos
+  if (texto != null || texto != undefined) {
+    arregloFiltrado = arregloEventos.filter(evento => evento.name.toLowerCase().includes(texto)) || evento.description.toLowerCase().includes(texto)
 
-export  function generarCheckboxes(data, container) {
+  }
+  return arregloFiltrado
 
-    const categorias = new Set(data.events.map((event) => event.category))
-  
-  
-    let checkboxesHTML = ""
-    for (const category of categorias) {
-      const checkbox = document.createElement('div')
-      checkboxesHTML += `
-      <div class="form-check form-check-inline">
-            <label class="form-check-label" for="checkbox-${category.replace(" ", "-")}"> ${category}
-            <input class="form-check-input category-filter" type="checkbox" value="${category}" id="checkbox-${category.replace(" ", "-")}"> 
-        </label>
-      </div>`
-    }
-  
-  
-    container.innerHTML = checkboxesHTML
-  }  
-  // Stats Page
+
+}
+export function filtroChecks(arregloEventos) {
+  let checkboxChecked = [...document.querySelectorAll('input[type=checkbox]:checked')]
+  checkboxChecked = checkboxChecked.map(e => e.value)
+
+  let arregloFiltrado = arregloEventos
+  if (checkboxChecked.length != 0) {
+    arregloFiltrado = arregloEventos.filter(evento => checkboxChecked.includes(evento.category))
+  }
+  return arregloFiltrado
+
+
+}
+export function pintarTarjetas(arregloEventos) {
+
+  let contenedorTarjetas = document.getElementById("contenedorTarjetas")
+  contenedorTarjetas.innerHTML = ""
+  if (arregloEventos.length === 0) {
+    contenedorTarjetas.innerHTML = "<p>No items found.</p>"
+    return
+  }
+
+  for (let i = 0; i < arregloEventos.length; i++) {
+    const tarjeta = document.createElement("div")
+    tarjeta.className = "card m-1"
+    tarjeta.innerHTML = `
+      <img src="${arregloEventos[i].image}" class="card-img-top">
+      <div class="card-body">
+        <h5 class="card-title text-center">${arregloEventos[i].name}</h5>
+        <p class="card-text text-center">${arregloEventos[i].description}</p>
+        <div class="container-fluid d-flex justify-content-center">
+          <p class="card-text text-center m-2">Price: ${arregloEventos[i].price} </p>
+          <a href="details.html?id=${arregloEventos[i]._id}" class="btn btn-primary">Details</a>
+        </div>
+      </div>
+    `
+    contenedorTarjetas.appendChild(tarjeta)
+
+  }
+}
+
+// Functions Stats Page
 export function createEventTable() {
   fetch('https://aulamindhub.github.io/amazing-api/events.json')
     .then(response => {
@@ -84,25 +91,25 @@ export function createEventTable() {
 export function generateTableHTML(data) {
   // Función para calcular el porcentaje de asistencia
   const calculateAssistancePercentage = (assistance, capacity) => {
-      return ((assistance  / capacity) * 100).toFixed(2);
+    return ((assistance / capacity) * 100).toFixed(2);
   };
 
   // Encontrar eventos con mayor y menor asistencia, y mayor capacidad
   const highestAssistanceEvent = data.events.reduce((prev, current) => {
-      const prevPercentage = calculateAssistancePercentage(prev.assistance || prev.estimate, prev.capacity);
-      const currentPercentage = calculateAssistancePercentage(current.assistance || current.estimate, current.capacity);
-      return prevPercentage > currentPercentage ? prev : current;
+    const prevPercentage = calculateAssistancePercentage(prev.assistance || prev.estimate, prev.capacity);
+    const currentPercentage = calculateAssistancePercentage(current.assistance || current.estimate, current.capacity);
+    return prevPercentage > currentPercentage ? prev : current;
   });
-  
+
   const lowestAssistanceEvent = data.events.reduce((prev, current) => {
-      const prevPercentage = calculateAssistancePercentage(prev.assistance || prev.estimate, prev.capacity);
-      const currentPercentage = calculateAssistancePercentage(current.assistance || prev.estimate, current.capacity);
-      return prevPercentage < currentPercentage ? prev : current; 
+    const prevPercentage = calculateAssistancePercentage(prev.assistance || prev.estimate, prev.capacity);
+    const currentPercentage = calculateAssistancePercentage(current.assistance || prev.estimate, current.capacity);
+    return prevPercentage < currentPercentage ? prev : current;
   });
 
 
   const largestCapacityEvent = data.events.reduce((prev, current) => {
-      return prev.capacity  > current.capacity ? prev : current;
+    return prev.capacity > current.capacity ? prev : current;
   });
 
   // Generar el HTML de la tabla
@@ -130,9 +137,9 @@ export function generateTableHTML(data) {
   `;
 
   return tableHTML;
-  
+
 }
- export async function createTable() {
+export async function createTable() {
   // Obtener el contenedor de la tabla
   const tableContainer = document.getElementById('tableContainerTres');
 
@@ -142,20 +149,20 @@ export function generateTableHTML(data) {
 
   // Filtrar eventos futuros
   const futureEvents = data.events.filter(event => new Date(event.date) > new Date(data.currentDate));
-console.log(futureEvents)
+  console.log(futureEvents)
   // Agrupar eventos por categoría y calcular totales
   const eventsByCategory = {};
   futureEvents.forEach(event => {
-      if (!eventsByCategory[event.category]) {
-          eventsByCategory[event.category] = {
-              revenue: 0,
-              totalAssistance: 0,
-              capacity: 0
-          };
-      }
-      eventsByCategory[event.category].revenue += event.price * (event.assistance || event.estimate);
-      eventsByCategory[event.category].totalAssistance += event.assistance || event.estimate;
-      eventsByCategory[event.category].capacity += event.capacity;
+    if (!eventsByCategory[event.category]) {
+      eventsByCategory[event.category] = {
+        revenue: 0,
+        totalAssistance: 0,
+        capacity: 0
+      };
+    }
+    eventsByCategory[event.category].revenue += event.price * (event.assistance || event.estimate);
+    eventsByCategory[event.category].totalAssistance += event.assistance || event.estimate;
+    eventsByCategory[event.category].capacity += event.capacity;
   });
 
   // Crear la estructura de la tabla
@@ -176,9 +183,9 @@ console.log(futureEvents)
 
   // Crear las filas de la tabla
   for (const category in eventsByCategory) {
-      const { revenue, totalAssistance, capacity } = eventsByCategory[category];
-      const percentage = ((totalAssistance / capacity) * 100).toFixed(2);
-      tableHTML += `
+    const { revenue, totalAssistance, capacity } = eventsByCategory[category];
+    const percentage = ((totalAssistance / capacity) * 100).toFixed(2);
+    tableHTML += `
           <tr>
               <td>${category}</td>
               <td>$${revenue}</td>

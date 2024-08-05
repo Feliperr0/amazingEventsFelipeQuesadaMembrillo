@@ -1,5 +1,5 @@
 
-let data = fetch('https://aulamindhub.github.io/amazing-api/events.json')
+fetch('https://aulamindhub.github.io/amazing-api/events.json')
   .then(response => response.json())
   .then(data => {
     const urlparams = new URLSearchParams(window.location.search);
