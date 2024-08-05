@@ -28,28 +28,29 @@ main{
 }
 
 .card{
-    height: 28rem;
-    width: 20rem;
-    border: 2px black solid;
+    width: 70vw;
+ 
+  
+  
+   border-radius: 30px;
+
     
 }
 
-
-
-#imgCard{
-    height: 200px;
-    object-fit: cover;
-    border-radius: 5px;
-    
-}
 
 #imgDetails{
     height: 500px;
     object-fit: cover;
-    border-radius: 5px;
+    border-radius: 30px;
+    
 }
 
-
+#containerdetails{
+    padding-top: 50px;
+}
+#titleHeader{
+    color: rgb(209, 33, 121)
+}
 .btn{
     color: rgb(209, 33, 121)
 }

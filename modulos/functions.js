@@ -53,15 +53,17 @@ export function pintarTarjetas(arregloEventos) {
     const tarjeta = document.createElement("div")
     tarjeta.className = "card m-2 container-flex "
     tarjeta.innerHTML = `
-      <img class="m-1" src="${arregloEventos[i].image}" class="card-img-top">
+      <img id="imgCard" class="m-1" src="${arregloEventos[i].image}" class="card-img-top">
     
         <h5 class="card-header card-title text-center">${arregloEventos[i].name}</h5>
-          <div class="card-body">
+          <div class="card-body justify-content-center">
         <p class="card-text text-center">${arregloEventos[i].description}</p>
-        <div class="container-fluid d-flex justify-content-center">
+        
           <p class="card-text text-center m-2">Price: ${arregloEventos[i].price} </p>
-          <a href="details.html?id=${arregloEventos[i]._id}" class="btn btn-primary">Details</a>
+<div class="container-fluid d-flex justify-content-center">
+          <a href="details.html?id=${arregloEventos[i]._id}" class="btn bg-dark btn-primary"> <h5>Details </h5></a>
         </div>
+       
       </div>
     `
     contenedorTarjetas.appendChild(tarjeta)
@@ -279,9 +281,9 @@ export function pintarTarjetaDetalles() {
 
         const cardContent = `
 
-  <div class="card container col-md-5 row justify-content-center text-center">
-      <img class="p-2" id="imgDet" src="${event.image}" alt="${event.name}">
-      <h5 class="card-title card-header">${event.name}</h5>
+  <div class="card  container col-md-5 row justify-content-center text-center">
+      <img id="imgDetails" class="p-2" id="imgDet" src="${event.image}" alt="${event.name}">
+      <h5 id="titleHeader"class="card-title card-header bg-dark">${event.name}</h5>
       <div class="card-body">
       <p class="card-text">Date: ${event.date} </p>
       <p class="card-text">Description: ${event.description}</p>
