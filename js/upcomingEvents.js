@@ -31,14 +31,14 @@ fetch('https://aulamindhub.github.io/amazing-api/events.json')
     document.getElementById("inputTexto").addEventListener('keyup', e => {
       let arregloFiltradoTexto = filtroTexto(upcomingEvents)
       let arregloFiltradoChecked = filtroChecks(arregloFiltradoTexto)
-      console.log(arregloFiltradoTexto);
+      
       pintarTarjetas(arregloFiltradoChecked)
 
     })
     document.getElementById("checkboxContainer").addEventListener('change', e => {
       let arregloFiltradoChecked = filtroChecks(upcomingEvents)
       let arregloFiltradoTexto = filtroTexto(arregloFiltradoChecked)
-      console.log(arregloFiltradoChecked)
+     
       pintarTarjetas(arregloFiltradoTexto)
     })
 

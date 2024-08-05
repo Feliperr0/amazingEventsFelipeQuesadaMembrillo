@@ -83,18 +83,18 @@ export function createEventTable() {
     })
     .catch(error => {
       console.error('Error al obtener los datos:', error);
-      // Mostrar un mensaje de error al usuario
+
       const tableContainer = document.getElementById('tableContainer');
       tableContainer.innerHTML = '<p>No Data Found.</p>';
     });
 }
 export function generateTableHTML(data) {
-  // Función para calcular el porcentaje de asistencia
+
   const calculateAssistancePercentage = (assistance, capacity) => {
     return ((assistance / capacity) * 100).toFixed(2);
   };
 
-  // Encontrar eventos con mayor y menor asistencia, y mayor capacidad
+
   const highestAssistanceEvent = data.events.reduce((prev, current) => {
     const prevPercentage = calculateAssistancePercentage(prev.assistance || prev.estimate, prev.capacity);
     const currentPercentage = calculateAssistancePercentage(current.assistance || current.estimate, current.capacity);
@@ -112,7 +112,7 @@ export function generateTableHTML(data) {
     return prev.capacity > current.capacity ? prev : current;
   });
 
-  // Generar el HTML de la tabla
+
   let tableHTML = `
       <table class="table table-dark table-hover table-bordered">
           <thead class="table-light">
@@ -140,17 +140,17 @@ export function generateTableHTML(data) {
 
 }
 export async function createTable() {
-  // Obtener el contenedor de la tabla
+
   const tableContainer = document.getElementById('tableContainerTres');
 
-  // Obtener los datos de la API
+
   const response = await fetch('https://aulamindhub.github.io/amazing-api/events.json');
   const data = await response.json();
 
-  // Filtrar eventos futuros
+
   const futureEvents = data.events.filter(event => new Date(event.date) > new Date(data.currentDate));
-  console.log(futureEvents)
-  // Agrupar eventos por categoría y calcular totales
+
+
   const eventsByCategory = {};
   futureEvents.forEach(event => {
     if (!eventsByCategory[event.category]) {
@@ -165,7 +165,7 @@ export async function createTable() {
     eventsByCategory[event.category].capacity += event.capacity;
   });
 
-  // Crear la estructura de la tabla
+
   let tableHTML = `
       <table class="table table-dark table-hover table-bordered">
           <thead class="table-light">
@@ -181,7 +181,7 @@ export async function createTable() {
 
           <tbody>`;
 
-  // Crear las filas de la tabla
+
   for (const category in eventsByCategory) {
     const { revenue, totalAssistance, capacity } = eventsByCategory[category];
     const percentage = ((totalAssistance / capacity) * 100).toFixed(2);
@@ -197,21 +197,19 @@ export async function createTable() {
           </tbody>
       </table>`;
 
-  // Agregar la tabla al contenedor
+
   tableContainer.innerHTML = tableHTML;
 }
 export async function createTableDos() {
-  // Obtener el contenedor de la tabla
+
   const tableContainerDos = document.getElementById('tableContainerCuatro');
 
-  // Obtener los datos de la API
   const response = await fetch('https://aulamindhub.github.io/amazing-api/events.json');
   const data = await response.json();
 
-  // Filtrar eventos pasados
   const pastEvents = data.events.filter(event => new Date(event.date) < new Date(data.currentDate));
 
-  // Agrupar eventos por categoría y calcular totales
+
   const eventsByCategory = {};
   pastEvents.forEach(event => {
     if (!eventsByCategory[event.category]) {
@@ -226,7 +224,7 @@ export async function createTableDos() {
     eventsByCategory[event.category].capacity += event.capacity;
   });
 
-  // Crear la estructura de la tabla
+
   let tableHTML = `
     <table class="table table-dark table-hover table-bordered">
       <thead class="table-light">
@@ -243,7 +241,6 @@ export async function createTableDos() {
       <tbody>`;
 
 
-  // Crear las filas de la tabla
   for (const category in eventsByCategory) {
     const { revenue, totalAssistance, capacity } = eventsByCategory[category];
     const percentage = ((totalAssistance / capacity) * 100).toFixed(2);
@@ -259,16 +256,45 @@ export async function createTableDos() {
       </tbody>
     </table>`;
 
-  // Agregar la tabla al contenedor
+
   tableContainerDos.innerHTML = tableHTML;
 }
 
+//functions Details Page
+export function pintarTarjetaDetalles() {
+  fetch('https://aulamindhub.github.io/amazing-api/events.json')
+    .then(response => response.json())
+    .then(data => {
+      const urlparams = new URLSearchParams(window.location.search);
+      const eventoId = urlparams.get('id');
+      const events = data.events;
+      console.log(eventoId)
+      for (let i = eventoId; i < events; i++) {
+        const event = events[i - 1];
+        console.log(event)
+        const cardContainer = document.getElementById('card');
+
+        const cardContent = `
+  <div class="card">
+    <div class="card-body">
+      <img src="${event.image}" alt="">
+      <h5 class="card-title">${event.name}</h5>
+      <p class="card-text">Date: ${event.date} </p>
+      <p class="card-text">Description: ${event.description}</p>
+      <p class="card-text">Category: ${event.category}</p>
+      <p class="card-text">Place: ${event.place}</p>
+      <p class="card-text">Capacity: ${event.capacity}</p>
+      <p class="card-text">Estimate: ${event.estimate}</p>
+      <p class="card-text">Price: ${event.price}</p>
+    </div>
+  </div>
+  `;
+
+        cardContainer.innerHTML = cardContent;
+      }
+
+    })
+    .catch(error => console.error('Error al obtener los eventos:', error));
 
 
-
-
-
-
-
-
-
+}

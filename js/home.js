@@ -5,7 +5,7 @@ fetch('https://aulamindhub.github.io/amazing-api/events.json')
   .then(data => {
 
     let events = data.events
-    console.log(events);
+
 
 
     for (let i = 0; i < events.length; i++) {
@@ -21,14 +21,14 @@ fetch('https://aulamindhub.github.io/amazing-api/events.json')
     document.getElementById("inputTexto").addEventListener('keyup', e => {
       let arregloFiltradoTexto = filtroTexto(data.events)
       let arregloFiltradoChecked = filtroChecks(arregloFiltradoTexto)
-      console.log(arregloFiltradoTexto);
+   
       pintarTarjetas(arregloFiltradoChecked)
 
     })
     document.getElementById("checkboxContainer").addEventListener('change', e => {
       let arregloFiltradoChecked = filtroChecks(data.events)
       let arregloFiltradoTexto = filtroTexto(arregloFiltradoChecked)
-      console.log(arregloFiltradoChecked)
+    
       pintarTarjetas(arregloFiltradoTexto)
     })
 
