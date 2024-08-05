@@ -33,21 +33,21 @@ fetch('https://aulamindhub.github.io/amazing-api/events.json')
 
     document.getElementById("inputTexto").addEventListener('keyup', e => {
       let arregloFiltradoTexto = filtroTexto(upcomingEvents)
-      let arregloFiltradoChecked = filtroChecks(arregloFiltradoTexto) 
+      let arregloFiltradoChecked = filtroChecks(arregloFiltradoTexto)
       console.log(arregloFiltradoTexto);
       pintarTarjetas(arregloFiltradoChecked)
 
     })
     document.getElementById("checkboxContainer").addEventListener('change', e => {
-      let arregloFiltradoChecked = filtroChecks(upcomingEvents) 
+      let arregloFiltradoChecked = filtroChecks(upcomingEvents)
       let arregloFiltradoTexto = filtroTexto(arregloFiltradoChecked)
       console.log(arregloFiltradoChecked)
       pintarTarjetas(arregloFiltradoTexto)
     })
 
- 
+
     pintarTarjetas(upcomingEvents)
-   
+
   })
   .catch(error => console.error('Error al obtener los eventos:', error));
 
@@ -88,15 +88,24 @@ function pintarCheckbox(arregloCategorias) {
 function filtroTexto(arregloEventos) {
   let texto = document.getElementById("inputTexto").value.toLowerCase()
   console.log(texto)
-  let arregloFiltrado = arregloEventos.filter(evento => evento.name.toLowerCase().includes(texto)) || evento.description.toLowerCase().includes(texto)
+  let arregloFiltrado = arregloEventos
+  if (texto != null || texto != undefined) {
+    arregloFiltrado = arregloEventos.filter(evento => evento.name.toLowerCase().includes(texto)) || evento.description.toLowerCase().includes(texto)
+
+  }
   return arregloFiltrado
+
+  
 }
 
 function filtroChecks(arregloEventos) {
   let checkboxChecked = [...document.querySelectorAll('input[type=checkbox]:checked')]
   checkboxChecked = checkboxChecked.map(e => e.value)
-  console.log(checkboxChecked)
-  let arregloFiltrado = arregloEventos.filter(evento =>checkboxChecked.includes(evento.category))
+
+  let arregloFiltrado = arregloEventos
+  if (checkboxChecked.length != 0) {
+    arregloFiltrado = arregloEventos.filter(evento => checkboxChecked.includes(evento.category))
+  } 
   return arregloFiltrado
 
 
