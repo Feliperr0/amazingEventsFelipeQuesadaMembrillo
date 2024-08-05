@@ -3,11 +3,13 @@
 export function pintarCheckbox(arregloCategorias) {
   for (let i = 0; i < arregloCategorias.length; i++) {
     const nuevoCheck = document.createElement("div")
-    nuevoCheck.className = "col-12 col-sm-6 col-md-4 col-lg-2 d-flex align-items-center justify-content-center mb-2"
+    nuevoCheck.className = "col-12 col-sm-6 col-md-4 col-lg-2 d-flex align-items-center justify-content-center mb-2 row"
     nuevoCheck.innerHTML = `
-  
-          <input type="checkbox" class="me-2" category-filter" value="${arregloCategorias[i]}" id="${arregloCategorias[i]}"> 
-      <label for="${arregloCategorias[i]}"> ${arregloCategorias[i]} </label>
+  <li class="nav-item align-content-center row">
+  <label for="${arregloCategorias[i]}"class="m-2"for="${arregloCategorias[i]}"> ${arregloCategorias[i]} 
+          <input type="checkbox" class="m-4" category-filter" value="${arregloCategorias[i]}" id="${arregloCategorias[i]}"> 
+      </label>
+       </li>
     `
     document.getElementById("checkboxContainer").appendChild(nuevoCheck)
 
@@ -49,11 +51,12 @@ export function pintarTarjetas(arregloEventos) {
 
   for (let i = 0; i < arregloEventos.length; i++) {
     const tarjeta = document.createElement("div")
-    tarjeta.className = "card m-1"
+    tarjeta.className = "card m-2 container-flex "
     tarjeta.innerHTML = `
-      <img src="${arregloEventos[i].image}" class="card-img-top">
-      <div class="card-body">
-        <h5 class="card-title text-center">${arregloEventos[i].name}</h5>
+      <img class="m-1" src="${arregloEventos[i].image}" class="card-img-top">
+    
+        <h5 class="card-header card-title text-center">${arregloEventos[i].name}</h5>
+          <div class="card-body">
         <p class="card-text text-center">${arregloEventos[i].description}</p>
         <div class="container-fluid d-flex justify-content-center">
           <p class="card-text text-center m-2">Price: ${arregloEventos[i].price} </p>
@@ -275,10 +278,11 @@ export function pintarTarjetaDetalles() {
         const cardContainer = document.getElementById('card');
 
         const cardContent = `
-  <div class="card">
-    <div class="card-body">
-      <img src="${event.image}" alt="">
-      <h5 class="card-title">${event.name}</h5>
+
+  <div class="card container col-md-5 row justify-content-center text-center">
+      <img class="p-2" id="imgDet" src="${event.image}" alt="${event.name}">
+      <h5 class="card-title card-header">${event.name}</h5>
+      <div class="card-body">
       <p class="card-text">Date: ${event.date} </p>
       <p class="card-text">Description: ${event.description}</p>
       <p class="card-text">Category: ${event.category}</p>
@@ -286,6 +290,7 @@ export function pintarTarjetaDetalles() {
       <p class="card-text">Capacity: ${event.capacity}</p>
       <p class="card-text">Estimate: ${event.estimate}</p>
       <p class="card-text">Price: ${event.price}</p>
+      </div>
     </div>
   </div>
   `;

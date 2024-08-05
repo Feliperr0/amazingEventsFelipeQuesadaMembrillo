@@ -28,6 +28,11 @@ main{
 }
 
 .card{
-    width: 18rem;
+    width: 20rem;
 }
 
+#imgDet{
+    width: 400px;
+  
+  }
+  
