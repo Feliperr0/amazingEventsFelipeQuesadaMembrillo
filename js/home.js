@@ -16,12 +16,12 @@ const checkboxes = document.querySelectorAll('.category-checkbox');
 function generarTarjetas(datos, contenedor, inputFiltro, checkboxes) {
   contenedor.innerHTML = '';
 
-  // Obtener las categorías seleccionadas
+  // Get selected categories
   const categoriasSeleccionadas = Array.from(checkboxes)
     .filter(checkbox => checkbox.checked)
     .map(checkbox => checkbox.value);
 
-  // Filtrar los datos por categoría y texto
+  // Filter data by category and text
   const datosFiltrados = datos.filter(evento => {
     const textoFiltro = inputFiltro.value.toLowerCase();
     return (
@@ -33,7 +33,13 @@ function generarTarjetas(datos, contenedor, inputFiltro, checkboxes) {
     );
   });
 
-  // Crear las tarjetas
+  // Check for empty results and display a message if needed
+  if (datosFiltrados.length === 0) {
+    contenedor.innerHTML = '<p class="no-items-message">No items found.</p>';
+    return; // Early exit to prevent unnecessary card creation
+  }
+
+  // Create cards for filtered data
   datosFiltrados.forEach(evento => {
     const tarjeta = document.createElement('div');
     tarjeta.classList.add('card');

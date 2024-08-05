@@ -30,12 +30,6 @@ const cardContent = `
 cardContainer.innerHTML = cardContent;
 }
 
-   
-
-
-    
-
-
   })
   .catch(error => console.error('Error al obtener los eventos:', error));
 
@@ -43,8 +37,5 @@ cardContainer.innerHTML = cardContent;
 
 
 
-// Supongamos que tienes un objeto llamado 'data' con la propiedad 'events'
-
-//const event = data.events.find(e => e._id === eventoId);
 
 

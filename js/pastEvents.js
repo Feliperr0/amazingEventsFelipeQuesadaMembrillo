@@ -208,6 +208,7 @@ let filterTexto = document.getElementById("filter-search")
 let categoryFilters = document.querySelectorAll(".category-filter")
 let contenedorTarjetas = document.getElementById("contenedorTarjetas")
 
+
 for (const event of data.events) {
   let eventDate = new Date(event.date)
   let currentDate = new Date(data.currentDate)
