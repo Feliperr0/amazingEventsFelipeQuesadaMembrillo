@@ -3,13 +3,12 @@
 export function pintarCheckbox(arregloCategorias) {
   for (let i = 0; i < arregloCategorias.length; i++) {
     const nuevoCheck = document.createElement("div")
-    nuevoCheck.className = "col-sm-6 col-md-4 col-lg-2 d-flex align-items-center justify-content-center mb-2 row"
+    nuevoCheck.className = "form-check form-check-inline text-light"
     nuevoCheck.innerHTML = `
-  <li class="nav-item">
-  <label for="${arregloCategorias[i]}"class="inputText m-2"for="${arregloCategorias[i]}"> ${arregloCategorias[i]} 
-          <input type="checkbox" class="form-check-input mt-0 m-4" category-filter" value="${arregloCategorias[i]}" id="${arregloCategorias[i]}"> 
-      </label>
-       </li>
+    
+                    <input type="checkbox" class="form-check-input " value="${arregloCategorias[i]}" id="${arregloCategorias[i]}"> 
+                    <label for="${arregloCategorias[i]}"class="form-check-label" for="${arregloCategorias[i]}"> ${arregloCategorias[i]}</label>
+                  
     `
     document.getElementById("checkboxContainer").appendChild(nuevoCheck)
 
@@ -45,7 +44,7 @@ export function pintarTarjetas(arregloEventos) {
   let contenedorTarjetas = document.getElementById("contenedorTarjetas")
   contenedorTarjetas.innerHTML = ""
   if (arregloEventos.length === 0) {
-    contenedorTarjetas.innerHTML = '<div class="container text-center"><p>No items found. </p> <img src="https://www.shutterstock.com/image-photo/funny-cute-dog-beagle-looks-600nw-2057440388.jpg" alt="dogo"> </div> '
+    contenedorTarjetas.innerHTML = '<div class="card container-flex text-center "><p class="card-header card-title text-center">No items found. </p> <img id="dogo" src="https://www.shutterstock.com/image-photo/funny-cute-dog-beagle-looks-600nw-2057440388.jpg" alt="dogo"> </div>    '
     return
   }
 
