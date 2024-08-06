@@ -3,11 +3,11 @@
 export function pintarCheckbox(arregloCategorias) {
   for (let i = 0; i < arregloCategorias.length; i++) {
     const nuevoCheck = document.createElement("div")
-    nuevoCheck.className = "col-12 col-sm-6 col-md-4 col-lg-2 d-flex align-items-center justify-content-center mb-2 row"
+    nuevoCheck.className = "col-sm-6 col-md-4 col-lg-2 d-flex align-items-center justify-content-center mb-2 row"
     nuevoCheck.innerHTML = `
-  <li class="nav-item align-content-center row">
-  <label for="${arregloCategorias[i]}"class="m-2"for="${arregloCategorias[i]}"> ${arregloCategorias[i]} 
-          <input type="checkbox" class="m-4" category-filter" value="${arregloCategorias[i]}" id="${arregloCategorias[i]}"> 
+  <li class="nav-item">
+  <label for="${arregloCategorias[i]}"class="inputText m-2"for="${arregloCategorias[i]}"> ${arregloCategorias[i]} 
+          <input type="checkbox" class="form-check-input mt-0 m-4" category-filter" value="${arregloCategorias[i]}" id="${arregloCategorias[i]}"> 
       </label>
        </li>
     `
@@ -45,7 +45,7 @@ export function pintarTarjetas(arregloEventos) {
   let contenedorTarjetas = document.getElementById("contenedorTarjetas")
   contenedorTarjetas.innerHTML = ""
   if (arregloEventos.length === 0) {
-    contenedorTarjetas.innerHTML = "<p>No items found.</p>"
+    contenedorTarjetas.innerHTML = '<div class="container text-center"><p>No items found. </p> <img src="https://www.shutterstock.com/image-photo/funny-cute-dog-beagle-looks-600nw-2057440388.jpg" alt="dogo"> </div> '
     return
   }
 
@@ -60,8 +60,8 @@ export function pintarTarjetas(arregloEventos) {
         <p class="card-text text-center">${arregloEventos[i].description}</p>
         
           <p class="card-text text-center m-2">Price: ${arregloEventos[i].price} </p>
-<div class="container-fluid d-flex justify-content-center">
-          <a href="details.html?id=${arregloEventos[i]._id}" class="btn bg-dark btn-primary"> <h5>Details </h5></a>
+<div class="container-fluid d-flex justify-content-center card-footer p-3 ">
+          <a href="details.html?id=${arregloEventos[i]._id}" class="btn bg-dark "> <h5>Details </h5></a>
         </div>
        
       </div>

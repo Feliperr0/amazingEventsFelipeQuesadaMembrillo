@@ -28,7 +28,7 @@ main{
 }
 
 .card{
-    height: 28rem;
+    height: 30rem;
     width: 20rem;
     border: 2px black solid;
     
@@ -49,7 +49,15 @@ main{
     border-radius: 5px;
 }
 
-
 .btn{
     color: rgb(209, 33, 121)
+}
+.navbar-brand{
+    color: rgb(209, 33, 121)
+
+}
+
+.inputText{
+    color: white;
+    
 }
