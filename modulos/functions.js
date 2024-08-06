@@ -276,6 +276,8 @@ export function pintarTarjetaDetalles() {
       for (let i = eventoId; i < events; i++) {
         const event = events[i - 1];
         console.log(event)
+        const capacityString = event.capacity !== null && event.capacity !== undefined ? `Capacity: ${event.capacity}` : '';
+        const estimateString = event.estimate !== null && event.estimate !== undefined ? `Estimate: ${event.estimate}` : '';
         const cardContainer = document.getElementById('card');
 
         const cardContent = `
@@ -288,8 +290,8 @@ export function pintarTarjetaDetalles() {
       <p class="card-text">Description: ${event.description}</p>
       <p class="card-text">Category: ${event.category}</p>
       <p class="card-text">Place: ${event.place}</p>
-      <p class="card-text">Capacity: ${event.capacity}</p>
-      <p class="card-text">Estimate: ${event.estimate}</p>
+      <p class="card-text"> ${capacityString}</p>
+      <p class="card-text">  ${estimateString}</p>
       <p class="card-text">Price: ${event.price}</p>
       </div>
     </div>
@@ -304,3 +306,4 @@ export function pintarTarjetaDetalles() {
 
 
 }
+
